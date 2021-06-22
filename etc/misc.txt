@@ -1,0 +1,17 @@
+dependecies : sudo apt install qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager ovmf
+
+check vfio :dmesg | grep -i vfio
+
+check which driver is loaded for passtrhu hardware : lspci -nnk -d hwbus:hwbid
+
+check kernel params : sudo cat /proc/cmdline
+
+Permissions :
+sudo usermod -a -G libvirt $(whoami)
+sudo systemctl start libvirtd
+sudo systemctl enable libvirtd
+<restart>
+
+
+sudo usermod -a -G kvm "YOUR USERNAME"
+sudo usermod -a -G libvirt "YOUR USERNAME"
